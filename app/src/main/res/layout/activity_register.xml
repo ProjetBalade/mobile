@@ -31,7 +31,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="#8FBDB4D1"
-        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="20dp"
         android:hint="Username"
         android:padding="20dp"
