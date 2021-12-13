@@ -2,7 +2,8 @@ package be.hevelaska.mobile.infrastructure;
 
 import java.util.List;
 
-import be.hevelaska.mobile.dto.DtoUser;
+import be.hevelaska.mobile.dto.user.DtoCreateUser;
+import be.hevelaska.mobile.dto.user.DtoUser;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -18,8 +19,8 @@ public interface IUsersService {
     @GET("users/{id}")
     Call<DtoUser> getById(@Path("id") int id);
 
-    //@POST("user")
-    //Call<DtoUser> create(@Body DtoCreateTodo todo);
+    @POST("users/create")
+    Call<DtoUser> create(@Body DtoCreateUser user);
 
     @DELETE("users/{id}")
     Call<Void> delete(@Path("id") int id);
