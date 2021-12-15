@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/a_day_at_the_park.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.12708333333333333" />
+        <entry key="app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.12708333333333333" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.25" />
