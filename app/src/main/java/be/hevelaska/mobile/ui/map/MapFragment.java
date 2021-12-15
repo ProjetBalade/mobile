@@ -46,6 +46,7 @@ public class MapFragment extends Fragment {
         binding.mapView.onCreate(savedInstanceState);
 
         binding.mapView.getMapAsync(this::setupMap);
+        binding.textResearchRide.setBackground(null);
 
         return root;
     }
