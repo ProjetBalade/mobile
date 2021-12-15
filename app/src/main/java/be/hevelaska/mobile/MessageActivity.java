@@ -8,13 +8,17 @@ import android.util.Log;
 import java.util.List;
 
 import be.hevelaska.mobile.databinding.ActivityMessageBinding;
+import be.hevelaska.mobile.dto.comment.DtoComment;
+import be.hevelaska.mobile.dto.comment.DtoCreateComment;
 import be.hevelaska.mobile.dto.dog.DtoCreateDog;
 import be.hevelaska.mobile.dto.dog.DtoDogs;
+import be.hevelaska.mobile.dto.message.DtoCreateMessage;
 import be.hevelaska.mobile.dto.message.DtoMessages;
 import be.hevelaska.mobile.dto.ride.DtoCreateRide;
 import be.hevelaska.mobile.dto.ride.DtoRides;
 import be.hevelaska.mobile.dto.user.DtoCreateUser;
 import be.hevelaska.mobile.dto.user.DtoUser;
+import be.hevelaska.mobile.infrastructure.ICommentsService;
 import be.hevelaska.mobile.infrastructure.IDogsService;
 import be.hevelaska.mobile.infrastructure.IMessagesService;
 import be.hevelaska.mobile.infrastructure.IRidesService;
@@ -32,6 +36,7 @@ public class MessageActivity extends AppCompatActivity {
     private IRidesService ridesService;
     private IDogsService dogsService;
     private IMessagesService messagesService;
+    private ICommentsService commentsService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +49,93 @@ public class MessageActivity extends AppCompatActivity {
         ridesService = RetrofitWrapper.getInstance().create(IRidesService.class);
         dogsService = RetrofitWrapper.getInstance().create(IDogsService.class);
         messagesService = RetrofitWrapper.getInstance().create(IMessagesService.class);
+        commentsService = RetrofitWrapper.getInstance().create(ICommentsService.class);
 
-        binding.getAllUsersButton.setOnClickListener(view -> getMessagesAndLog());
-        binding.getUserByIdButton.setOnClickListener(view -> getDogByIdLog());
-        binding.deleteUserButton.setOnClickListener(view -> deleteDogAndLog());
-        binding.updateUserButton.setOnClickListener(view -> updateDogAndLog());
-        binding.createUserButton.setOnClickListener(view -> createDogAndLog());
+        binding.getAllUsersButton.setOnClickListener(view -> getCommentsAndLog());
+        binding.getUserByIdButton.setOnClickListener(view -> getCommentByIdLog());
+        binding.deleteUserButton.setOnClickListener(view -> deleteCommentAndLog());
+        binding.updateUserButton.setOnClickListener(view -> updateCommentAndLog());
+        binding.createUserButton.setOnClickListener(view -> createCommentAndLog());
 
+    }
+    // test commentaire
+    private void getCommentsAndLog() {
+        commentsService.getAll(2)
+                .enqueue(new Callback<List<DtoComment>>() {
+                    @Override
+                    public void onResponse(Call<List<DtoComment>> call, Response<List<DtoComment>> response) {
+                        for (int i = 0; i < response.body().size(); i++) {
+                            Log.i("COMMENTS", response.body().get(i).toString());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<DtoComment>> call, Throwable t) {
+                        Log.e("COMMENTS", "Error getting all comments");
+                        Log.e("COMMENTS", t.getMessage());
+                    }
+                });
+    }
+
+    private void getCommentByIdLog(){
+        commentsService.getById(2)
+                .enqueue(new Callback<DtoComment>() {
+                    @Override
+                    public void onResponse(Call<DtoComment> call, Response<DtoComment> response) {
+                        Log.i("COMMENTS", response.body().toString());
+                    }
+
+                    @Override
+                    public void onFailure(Call<DtoComment> call, Throwable t) {
+                        Log.e("COMMENTS", "Error get message");
+
+                    }
+                });
+    }
+
+    private void deleteCommentAndLog(){
+        commentsService.delete(7)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.i("COMMENTS","commentaire supprimer");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("COMMENTS", "Error delete comment");
+                    }
+                });
+    }
+
+    private void updateCommentAndLog(){
+        commentsService.update(5,new DtoComment(5,"contenu du commentaire",2,"une jolie photo",5,1,1))
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.i("COMMENTS","Todo updated");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("COMMENTS", "Error update message");
+                    }
+                });
+    }
+
+    private void createCommentAndLog(){
+        commentsService.create(new DtoCreateComment("text",1,"image de vac",4,2,2))
+                .enqueue(new Callback<DtoComment>() {
+                    @Override
+                    public void onResponse(Call<DtoComment> call, Response<DtoComment> response) {
+                        Log.i("COMMENTS", "commentaire created");
+                    }
+
+                    @Override
+                    public void onFailure(Call<DtoComment> call, Throwable t) {
+                        Log.e("COMMENTS", "Error create commentaire");
+                    }
+                });
     }
     // test message
     private void getMessagesAndLog() {
@@ -67,6 +152,67 @@ public class MessageActivity extends AppCompatActivity {
                     public void onFailure(Call<List<DtoMessages>> call, Throwable t) {
                         Log.e("MESSAGES", "Error getting all dogs");
                         Log.e("MESSAGES", t.getMessage());
+                    }
+                });
+    }
+
+    private void getMessageByIdLog(){
+        messagesService.getById(3)
+                .enqueue(new Callback<DtoMessages>() {
+                    @Override
+                    public void onResponse(Call<DtoMessages> call, Response<DtoMessages> response) {
+                        Log.i("MESSAGES", response.body().toString());
+                    }
+
+                    @Override
+                    public void onFailure(Call<DtoMessages> call, Throwable t) {
+                        Log.e("MESSAGES", "Error get message");
+
+                    }
+                });
+    }
+
+    private void deleteMessageAndLog(){
+        messagesService.delete(4)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.i("MESSAGES","message supprimer");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("MESSAGES", "Error delete message");
+                    }
+                });
+    }
+
+    private void updateMessageAndLog(){
+        messagesService.update(3,new DtoMessages(3,1,2,"2021-12-15","ceci est un objet"))
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.i("MESSAGES","Todo updated");
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Log.e("MESSAGES", "Error update message");
+                    }
+                });
+    }
+
+    private void createMessageAndLog(){
+        messagesService.create(new DtoCreateMessage(2,1,"new message","test creation message"))
+                .enqueue(new Callback<DtoMessages>() {
+                    @Override
+                    public void onResponse(Call<DtoMessages> call, Response<DtoMessages> response) {
+                        Log.i("MESSAGES", "message created");
+                    }
+
+                    @Override
+                    public void onFailure(Call<DtoMessages> call, Throwable t) {
+                        Log.e("MESSAGES", "Error create message");
                     }
                 });
     }

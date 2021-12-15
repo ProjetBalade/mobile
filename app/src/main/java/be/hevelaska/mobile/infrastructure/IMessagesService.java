@@ -21,7 +21,7 @@ public interface IMessagesService {
     @GET("message/{id}")
     Call<DtoMessages> getById(@Path("id") int id);
 
-    @POST("message/create")
+    @POST("message")
     Call<DtoMessages> create(@Body DtoCreateMessage message);
 
     @DELETE("message/{id}")
