@@ -13,21 +13,22 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import be.hevelaska.mobile.databinding.FragmentNotificationsBinding;
+import be.hevelaska.mobile.databinding.FragmentProfileBinding;
 import be.hevelaska.mobile.ui.notifications.NotificationsViewModel;
 
 public class ProfileFragment extends Fragment {
-    private NotificationsViewModel profileViewModel;
-    private FragmentNotificationsBinding binding;
+    private ProfileViewModel profileViewModel;
+    private FragmentProfileBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         profileViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+                new ViewModelProvider(this).get(ProfileViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textNotifications;
+        final TextView textView = binding.textProfil;
         profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

@@ -12,19 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import be.hevelaska.mobile.databinding.FragmentDashboardBinding;
+import be.hevelaska.mobile.databinding.FragmentMessageBinding;
 
 public class MessageFragment extends Fragment {
 
     private MessageViewModel dashboardViewModel;
-    private FragmentDashboardBinding binding;
+    private FragmentMessageBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
                 new ViewModelProvider(this).get(MessageViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentMessageBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textDashboard;
