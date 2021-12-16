@@ -13,6 +13,7 @@
         <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.25" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1203125" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.175390625" />
+        <entry key="app/src/main/res/layout/activity_add_ride.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24757793461008024" />
         <entry key="app/src/main/res/layout/activity_message.xml" value="0.23385416666666667" />

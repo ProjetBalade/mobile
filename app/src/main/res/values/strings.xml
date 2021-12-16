@@ -17,4 +17,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ajout_balade">ajout balade</string>
+    <string name="recherche">Recherche</string>
+    <string name="zoom_on_your_location">Zoom on your location</string>
+    <string name="cr_ez_votre_balade">Créez votre balade</string>
+    <string name="intituler_de_votre_balade">intituler de votre balade</string>
+    <string name="adresse">Adresse</string>
+    <string name="description">description</string>
+    <string name="site_web">site web</string>
+    <string name="difficulte">difficulté de 1 à 5</string>
+    <string name="horaires">horaires</string>
+    <string name="ajouter_une_image">ajouter une image</string>
+    <string name="score">score de 1 à 5</string>
 </resources>

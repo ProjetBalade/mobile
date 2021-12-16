@@ -2,10 +2,8 @@ package be.hevelaska.mobile.infrastructure;
 
 import java.util.List;
 
-import be.hevelaska.mobile.dto.ride.DtoCreateRide;
-import be.hevelaska.mobile.dto.ride.DtoRides;
-import be.hevelaska.mobile.dto.user.DtoCreateUser;
-import be.hevelaska.mobile.dto.user.DtoUser;
+import be.hevelaska.mobile.data.model.ride.DtoCreateRide;
+import be.hevelaska.mobile.data.model.ride.DtoRides;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

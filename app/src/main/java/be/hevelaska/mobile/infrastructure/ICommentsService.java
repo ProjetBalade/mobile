@@ -2,10 +2,8 @@ package be.hevelaska.mobile.infrastructure;
 
 import java.util.List;
 
-import be.hevelaska.mobile.dto.comment.DtoComment;
-import be.hevelaska.mobile.dto.comment.DtoCreateComment;
-import be.hevelaska.mobile.dto.message.DtoCreateMessage;
-import be.hevelaska.mobile.dto.message.DtoMessages;
+import be.hevelaska.mobile.data.model.comment.DtoComment;
+import be.hevelaska.mobile.data.model.comment.DtoCreateComment;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

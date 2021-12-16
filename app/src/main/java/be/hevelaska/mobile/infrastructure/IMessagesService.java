@@ -2,10 +2,8 @@ package be.hevelaska.mobile.infrastructure;
 
 import java.util.List;
 
-import be.hevelaska.mobile.dto.dog.DtoCreateDog;
-import be.hevelaska.mobile.dto.dog.DtoDogs;
-import be.hevelaska.mobile.dto.message.DtoCreateMessage;
-import be.hevelaska.mobile.dto.message.DtoMessages;
+import be.hevelaska.mobile.data.model.message.DtoCreateMessage;
+import be.hevelaska.mobile.data.model.message.DtoMessages;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

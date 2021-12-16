@@ -1,7 +1,7 @@
-package be.hevelaska.mobile.dto.comment;
+package be.hevelaska.mobile.data.model.comment;
 
-public class DtoCreateComment {
-
+public class DtoComment {
+    private int id;
     private String content;
     private int score ;
     private String image;
@@ -9,13 +9,22 @@ public class DtoCreateComment {
     private int idUser;
     private int idRide ;
 
-    public DtoCreateComment(String content, int score, String image, int difficulty, int idUser, int idRide) {
+    public DtoComment(int id, String content, int score, String image, int difficulty, int idUser, int idRide) {
+        this.id = id;
         this.content = content;
         this.score = score;
         this.image = image;
         this.difficulty = difficulty;
         this.idUser = idUser;
         this.idRide = idRide;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getContent() {
@@ -64,5 +73,18 @@ public class DtoCreateComment {
 
     public void setIdRide(int idRide) {
         this.idRide = idRide;
+    }
+
+    @Override
+    public String toString() {
+        return "DtoComments{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", score=" + score +
+                ", image='" + image + '\'' +
+                ", difficulty=" + difficulty +
+                ", idUser=" + idUser +
+                ", idRide=" + idRide +
+                '}';
     }
 }

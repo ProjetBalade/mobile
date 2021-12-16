@@ -1,6 +1,7 @@
 package be.hevelaska.mobile;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -8,7 +9,10 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import be.hevelaska.mobile.data.model.ride.RideRepository;
 import be.hevelaska.mobile.databinding.ActivityMainBinding;
+import be.hevelaska.mobile.infrastructure.IRidesService;
+import be.hevelaska.mobile.infrastructure.RetrofitWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        loadRides();
+    }
+
+    private void loadRides() {
+        RideRepository.getInstance(RetrofitWrapper.getInstance().create(IRidesService.class))
+                .reloadRides(null, () -> {
+                    Toast.makeText(MainActivity.this, "Une erreur est survenue. Vérifiez votre connexion internet", Toast.LENGTH_SHORT).show();
+                });
     }
 
 }

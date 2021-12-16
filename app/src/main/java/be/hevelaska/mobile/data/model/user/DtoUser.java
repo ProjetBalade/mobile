@@ -1,4 +1,4 @@
-package be.hevelaska.mobile.dto.user;
+package be.hevelaska.mobile.data.model.user;
 
 public class DtoUser {
     private int id;

@@ -1,4 +1,4 @@
-package be.hevelaska.mobile.dto.ride;
+package be.hevelaska.mobile.data.model.ride;
 
 public class DtoRides {
 

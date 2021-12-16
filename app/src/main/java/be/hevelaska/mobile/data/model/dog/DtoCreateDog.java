@@ -1,6 +1,4 @@
-package be.hevelaska.mobile.dto.dog;
-
-import java.util.Date;
+package be.hevelaska.mobile.data.model.dog;
 
 public class DtoCreateDog {
 

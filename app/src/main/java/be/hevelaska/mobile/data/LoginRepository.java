@@ -32,6 +32,10 @@ public class LoginRepository {
         return user != null;
     }
 
+    public int getUserId() {
+        return 2; // TODO
+    }
+
     public void logout() {
         user = null;
         dataSource.logout();
