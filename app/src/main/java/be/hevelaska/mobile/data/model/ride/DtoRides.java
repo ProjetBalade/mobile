@@ -9,7 +9,6 @@ public class DtoRides {
     private String website;
     private int  difficulty;
     private String schedule;
-    private String photo;
     private int score ;
     private int idUser;
 
@@ -21,7 +20,6 @@ public class DtoRides {
         this.website = website;
         this.difficulty = difficulty;
         this.schedule = schedule;
-        this.photo = photo;
         this.score = score;
         this.idUser = idUser;
     }
@@ -84,13 +82,6 @@ public class DtoRides {
         this.schedule = schedule;
     }
 
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 
     public int getScore() {
         return score;
@@ -118,7 +109,6 @@ public class DtoRides {
                 ", website='" + website + '\'' +
                 ", difficulty=" + difficulty +
                 ", schedule='" + schedule + '\'' +
-                ", photo='" + photo + '\'' +
                 ", score=" + score +
                 ", idUser=" + idUser +
                 '}';

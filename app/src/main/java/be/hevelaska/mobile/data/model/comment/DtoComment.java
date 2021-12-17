@@ -4,16 +4,14 @@ public class DtoComment {
     private int id;
     private String content;
     private int score ;
-    private String image;
     private int difficulty ;
     private int idUser;
     private int idRide ;
 
-    public DtoComment(int id, String content, int score, String image, int difficulty, int idUser, int idRide) {
+    public DtoComment(int id, String content, int score, int difficulty, int idUser, int idRide) {
         this.id = id;
         this.content = content;
         this.score = score;
-        this.image = image;
         this.difficulty = difficulty;
         this.idUser = idUser;
         this.idRide = idRide;
@@ -43,13 +41,7 @@ public class DtoComment {
         this.score = score;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public int getDifficulty() {
         return difficulty;
@@ -81,7 +73,6 @@ public class DtoComment {
                 "id=" + id +
                 ", content='" + content + '\'' +
                 ", score=" + score +
-                ", image='" + image + '\'' +
                 ", difficulty=" + difficulty +
                 ", idUser=" + idUser +
                 ", idRide=" + idRide +

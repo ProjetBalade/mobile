@@ -28,4 +28,5 @@
     <string name="horaires">horaires</string>
     <string name="ajouter_une_image">ajouter une image</string>
     <string name="score">score de 1 à 5</string>
+    <string name="profil">profil</string>
 </resources>

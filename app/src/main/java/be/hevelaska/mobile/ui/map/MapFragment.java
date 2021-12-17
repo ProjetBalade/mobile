@@ -158,19 +158,28 @@ public class MapFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        binding.mapView.onResume();
+        if(binding != null){
+            binding.mapView.onResume();
+
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        binding.mapView.onPause();
+
+        if(binding != null) {
+            binding.mapView.onPause();
+        }
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        binding.mapView.onSaveInstanceState(outState);
+        if(binding != null){
+            binding.mapView.onSaveInstanceState(outState);
+
+        }
     }
 
     @Override

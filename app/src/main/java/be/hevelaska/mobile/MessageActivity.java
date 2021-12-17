@@ -109,7 +109,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void updateCommentAndLog(){
-        commentsService.update(5,new DtoComment(5,"contenu du commentaire",2,"une jolie photo",5,1,1))
+        commentsService.update(5,new DtoComment(5,"contenu du commentaire",2,5,1,1))
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -124,7 +124,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void createCommentAndLog(){
-        commentsService.create(new DtoCreateComment("text",1,"image de vac",4,2,2))
+        commentsService.create(new DtoCreateComment("text",1,4,2,2))
                 .enqueue(new Callback<DtoComment>() {
                     @Override
                     public void onResponse(Call<DtoComment> call, Response<DtoComment> response) {

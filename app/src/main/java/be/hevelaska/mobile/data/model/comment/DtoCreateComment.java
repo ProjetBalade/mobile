@@ -4,15 +4,13 @@ public class DtoCreateComment {
 
     private String content;
     private int score ;
-    private String image;
     private int difficulty ;
     private int idUser;
     private int idRide ;
 
-    public DtoCreateComment(String content, int score, String image, int difficulty, int idUser, int idRide) {
+    public DtoCreateComment(String content, int score, int difficulty, int idUser, int idRide) {
         this.content = content;
         this.score = score;
-        this.image = image;
         this.difficulty = difficulty;
         this.idUser = idUser;
         this.idRide = idRide;
@@ -34,13 +32,6 @@ public class DtoCreateComment {
         this.score = score;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
     public int getDifficulty() {
         return difficulty;

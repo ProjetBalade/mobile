@@ -1,5 +1,6 @@
 package be.hevelaska.mobile.ui.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import be.hevelaska.mobile.GestionDogActivity;
 import be.hevelaska.mobile.databinding.FragmentNotificationsBinding;
 import be.hevelaska.mobile.databinding.FragmentProfileBinding;
+import be.hevelaska.mobile.ui.addride.AddRideActivity;
 import be.hevelaska.mobile.ui.notifications.NotificationsViewModel;
 
 public class ProfileFragment extends Fragment {
@@ -29,6 +32,7 @@ public class ProfileFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.textProfil;
+        binding.buttonDog.setOnClickListener(this::openGestionDog);
         profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -42,5 +46,11 @@ public class ProfileFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void openGestionDog(View view) {
+        Intent intent = new Intent(getContext(), GestionDogActivity.class);
+        startActivity(intent);
+
     }
 }
