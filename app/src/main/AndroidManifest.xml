@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Mobile"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".GestionDogActivity"
+            android:name=".ui.gestionDog.GestionDogActivity"
             android:exported="false" />
         <activity
             android:name=".ui.addride.AddRideActivity"

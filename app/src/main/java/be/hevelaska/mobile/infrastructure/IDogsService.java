@@ -3,7 +3,7 @@ package be.hevelaska.mobile.infrastructure;
 import java.util.List;
 
 import be.hevelaska.mobile.data.model.dog.DtoCreateDog;
-import be.hevelaska.mobile.data.model.dog.DtoDogs;
+import be.hevelaska.mobile.data.model.dog.DtoDog;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -15,17 +15,17 @@ import retrofit2.http.Path;
 public interface IDogsService {
 
     @GET("dog/getall")
-    Call<List<DtoDogs>> getAll();
+    Call<List<DtoDog>> getAll();
 
     @GET("dog/{id}")
-    Call<DtoDogs> getById(@Path("id") int id);
+    Call<DtoDog> getById(@Path("id") int id);
 
     @POST("dog/create")
-    Call<DtoDogs> create(@Body DtoCreateDog dog);
+    Call<DtoDog> create(@Body DtoCreateDog dog);
 
     @DELETE("dog/{id}")
     Call<Void> delete(@Path("id") int id);
 
     @PUT("dog/{id}")
-    Call<Void> update(@Path("id") int id,@Body DtoDogs dtoDogs);
+    Call<Void> update(@Path("id") int id,@Body DtoDog dtoDogs);
 }

@@ -11,8 +11,10 @@ public class DtoRides {
     private String schedule;
     private int score ;
     private int idUser;
+    private double longitude;
+    private double latitude;
 
-    public DtoRides(int id, String nameRide, String place, String description, String website, int difficulty, String schedule, String photo, int score, int idUser) {
+    public DtoRides(int id, String nameRide, String place, String description, String website, int difficulty, String schedule, String photo, int score, int idUser, double longitude, double latitude) {
         this.id = id;
         this.nameRide = nameRide;
         this.place = place;
@@ -22,6 +24,8 @@ public class DtoRides {
         this.schedule = schedule;
         this.score = score;
         this.idUser = idUser;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
 
@@ -99,6 +103,30 @@ public class DtoRides {
         this.idUser = idUser;
     }
 
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
     @Override
     public String toString() {
         return "DtoRides{" +
@@ -111,6 +139,8 @@ public class DtoRides {
                 ", schedule='" + schedule + '\'' +
                 ", score=" + score +
                 ", idUser=" + idUser +
+                ", longitude=" + longitude +
+                ", latitude=" + latitude +
                 '}';
     }
 }
