@@ -1,6 +1,6 @@
 package be.hevelaska.mobile.data.model.dog;
 
-public class DtoDogs {
+public class DtoDog {
     private int id;
     private String nameDog ;
     private String raceDog;
@@ -8,7 +8,7 @@ public class DtoDogs {
     private String dateOfBirth;
     private int idUser;
 
-    public DtoDogs(int id, String nameDog, String raceDog, String dateOfBirth, int idUser) {
+    public DtoDog(int id, String nameDog, String raceDog, String dateOfBirth, int idUser) {
         this.id = id;
         this.nameDog = nameDog;
         this.raceDog = raceDog;

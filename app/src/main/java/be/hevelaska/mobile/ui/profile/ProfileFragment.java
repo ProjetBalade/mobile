@@ -13,11 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import be.hevelaska.mobile.GestionDogActivity;
-import be.hevelaska.mobile.databinding.FragmentNotificationsBinding;
+import be.hevelaska.mobile.ui.gestionDog.GestionDogActivity;
 import be.hevelaska.mobile.databinding.FragmentProfileBinding;
-import be.hevelaska.mobile.ui.addride.AddRideActivity;
-import be.hevelaska.mobile.ui.notifications.NotificationsViewModel;
 
 public class ProfileFragment extends Fragment {
     private ProfileViewModel profileViewModel;

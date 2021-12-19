@@ -10,8 +10,10 @@ public class DtoCreateRide {
     private String photo;
     private int score ;
     private int idUser;
+    private double longitude;
+    private double latitude;
 
-    public DtoCreateRide(String nameRide, String place, String description, String website, int difficulty, String schedule, String photo, int score, int idUser) {
+    public DtoCreateRide(String nameRide, String place, String description, String website, int difficulty, String schedule, String photo, int score, int idUser,double longitude, double latitude) {
         this.nameRide = nameRide;
         this.place = place;
         this.description = description;
@@ -21,6 +23,32 @@ public class DtoCreateRide {
         this.photo = photo;
         this.score = score;
         this.idUser = idUser;
+        this.longitude = longitude;
+        this.latitude = latitude;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
     public String getNameRide() {

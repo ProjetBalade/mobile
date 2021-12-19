@@ -11,7 +11,7 @@ import be.hevelaska.mobile.databinding.ActivityMessageBinding;
 import be.hevelaska.mobile.data.model.comment.DtoComment;
 import be.hevelaska.mobile.data.model.comment.DtoCreateComment;
 import be.hevelaska.mobile.data.model.dog.DtoCreateDog;
-import be.hevelaska.mobile.data.model.dog.DtoDogs;
+import be.hevelaska.mobile.data.model.dog.DtoDog;
 import be.hevelaska.mobile.data.model.message.DtoCreateMessage;
 import be.hevelaska.mobile.data.model.message.DtoMessages;
 import be.hevelaska.mobile.data.model.ride.DtoCreateRide;
@@ -220,16 +220,16 @@ public class MessageActivity extends AppCompatActivity {
     // test dog
     private void getDogsAndLog() {
         dogsService.getAll()
-                .enqueue(new Callback<List<DtoDogs>>() {
+                .enqueue(new Callback<List<DtoDog>>() {
                     @Override
-                    public void onResponse(Call<List<DtoDogs>> call, Response<List<DtoDogs>> response) {
+                    public void onResponse(Call<List<DtoDog>> call, Response<List<DtoDog>> response) {
                         for (int i = 0; i < response.body().size(); i++) {
                             Log.i("DOGS", response.body().get(i).toString());
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<List<DtoDogs>> call, Throwable t) {
+                    public void onFailure(Call<List<DtoDog>> call, Throwable t) {
                         Log.e("DOGS", "Error getting all dogs");
                         Log.e("DOGS", t.getMessage());
                     }
@@ -238,14 +238,14 @@ public class MessageActivity extends AppCompatActivity {
 
     private void getDogByIdLog(){
         dogsService.getById(5)
-                .enqueue(new Callback<DtoDogs>() {
+                .enqueue(new Callback<DtoDog>() {
                     @Override
-                    public void onResponse(Call<DtoDogs> call, Response<DtoDogs> response) {
+                    public void onResponse(Call<DtoDog> call, Response<DtoDog> response) {
                         Log.i("DOGS", response.body().toString());
                     }
 
                     @Override
-                    public void onFailure(Call<DtoDogs> call, Throwable t) {
+                    public void onFailure(Call<DtoDog> call, Throwable t) {
                         Log.e("DOGS", "Error get dog");
 
                     }
@@ -268,7 +268,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void updateDogAndLog(){
-        dogsService.update(2,new DtoDogs(2,"testUpdate","labrador","2021-11-21",1))
+        dogsService.update(2,new DtoDog(2,"testUpdate","labrador","2021-11-21",1))
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -284,14 +284,14 @@ public class MessageActivity extends AppCompatActivity {
 
     private void createDogAndLog(){
         dogsService.create(new DtoCreateDog("maska","berger de laponie","2021-11-25",2))
-                .enqueue(new Callback<DtoDogs>() {
+                .enqueue(new Callback<DtoDog>() {
                     @Override
-                    public void onResponse(Call<DtoDogs> call, Response<DtoDogs> response) {
+                    public void onResponse(Call<DtoDog> call, Response<DtoDog> response) {
                         Log.i("DOGS", "dog created");
                     }
 
                     @Override
-                    public void onFailure(Call<DtoDogs> call, Throwable t) {
+                    public void onFailure(Call<DtoDog> call, Throwable t) {
                         Log.e("DOGS", "Error create dog");
                     }
                 });
@@ -348,7 +348,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void updateRideAndLog(){
-        ridesService.update(2,new DtoRides(2,"mont a gourmet","place du village","restaurant pour smourbiff","http:montagourmet",4,"heures","photo ici",3,1))
+        ridesService.update(2,new DtoRides(2,"mont a gourmet","place du village","restaurant pour smourbiff","http:montagourmet",4,"heures","photo ici",3,1,1234,456))
                 .enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
@@ -363,7 +363,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void createRideAndLog(){
-        ridesService.create(new DtoCreateRide("new ride","new place","new desc","siteweb",5,"heure d'ouverture","image",1,2))
+        ridesService.create(new DtoCreateRide("new ride","new place","new desc","siteweb",5,"heure d'ouverture","image",1,2,1234,567))
                 .enqueue(new Callback<DtoRides>() {
                     @Override
                     public void onResponse(Call<DtoRides> call, Response<DtoRides> response) {

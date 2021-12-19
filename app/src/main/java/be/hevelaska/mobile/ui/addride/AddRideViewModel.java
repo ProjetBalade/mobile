@@ -19,6 +19,8 @@ public class AddRideViewModel extends ViewModel {
     private String schedule;
     private String photo;
     private int score;
+    private double longitude;
+    private double latitude;
 
     private final LoginRepository loginRepository;
     private final RideRepository repository;
@@ -60,8 +62,12 @@ public class AddRideViewModel extends ViewModel {
         this.score = score;
     }
 
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+
     public void createRide(Runnable success, Runnable error) {
-        DtoCreateRide dto = new DtoCreateRide(nameRide, place, description, website, difficulty, schedule, photo, score, loginRepository.getUserId());
+        DtoCreateRide dto = new DtoCreateRide(nameRide, place, description, website, difficulty, schedule, photo, score, loginRepository.getUserId(),longitude,latitude);
         this.repository.createRides(dto, success, error);
     }
 }
