@@ -16,7 +16,12 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.gestionDog.GestionDogActivity"
-            android:exported="false" />
+            android:exported="false">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity" />
+        </activity>
+
         <activity
             android:name=".ui.addride.AddRideActivity"
             android:exported="false" />

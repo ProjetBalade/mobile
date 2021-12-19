@@ -3,6 +3,7 @@ package be.hevelaska.mobile.ui.gestionDog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -18,11 +19,14 @@ public class GestionDogActivity extends AppCompatActivity {
     private DogsAdapter dogsAdapter;
     private GestionDogViewModel gestionDogViewModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityGestionDogBinding.inflate(getLayoutInflater());
         gestionDogViewModel = new GestionDogViewModel();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         gestionDogViewModel.load();
         setContentView(binding.getRoot());
