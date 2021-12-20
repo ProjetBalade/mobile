@@ -3,6 +3,7 @@ package be.hevelaska.mobile.data.model.dog;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import be.hevelaska.mobile.infrastructure.IDogsService;
@@ -20,7 +21,7 @@ public class DogRepository {
 
     private DogRepository(IDogsService dataSource) {
         this.dataSource = dataSource;
-        this.dogsList = new MutableLiveData<>();
+        this.dogsList = new MutableLiveData<>(new ArrayList<>());
     }
 
     public static DogRepository getInstance(IDogsService dataSource) {
@@ -43,8 +44,13 @@ public class DogRepository {
                 .enqueue(new Callback<List<DtoDog>>() {
                     @Override
                     public void onResponse(Call<List<DtoDog>> call, Response<List<DtoDog>> response) {
-                        dogsList.setValue(response.body());
-                        if(success != null) success.run();
+                        if(response.code() == 200) {
+                            dogsList.setValue(response.body());
+                            if(success != null) success.run();
+                        }
+                        else {
+                            if(error != null) error.run();
+                        }
                     }
 
                     @Override

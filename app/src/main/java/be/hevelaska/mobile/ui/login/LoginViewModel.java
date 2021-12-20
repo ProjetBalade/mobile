@@ -10,14 +10,15 @@ import be.hevelaska.mobile.data.LoginRepository;
 import be.hevelaska.mobile.data.Result;
 import be.hevelaska.mobile.data.model.LoggedInUser;
 import be.hevelaska.mobile.R;
+import be.hevelaska.mobile.data.model.user.UserRepository;
 
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
-    private LoginRepository loginRepository;
+    private UserRepository loginRepository;
 
-    LoginViewModel(LoginRepository loginRepository) {
+    LoginViewModel(UserRepository loginRepository) {
         this.loginRepository = loginRepository;
     }
 
@@ -31,14 +32,12 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String username, String password) {
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
-
-        if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+        loginRepository.authenticate(username, password,() -> {
+            LoggedInUser data = loginRepository.getLoggedUser();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
-        } else {
+        }, () -> {
             loginResult.setValue(new LoginResult(R.string.login_failed));
-        }
+        });
     }
 
     public void loginDataChanged(String username, String password) {
@@ -65,6 +64,6 @@ public class LoginViewModel extends ViewModel {
 
     // A placeholder password validation check
     private boolean isPasswordValid(String password) {
-        return password != null && password.trim().length() > 5;
+        return password != null && password.trim().length() > 2;
     }
 }
