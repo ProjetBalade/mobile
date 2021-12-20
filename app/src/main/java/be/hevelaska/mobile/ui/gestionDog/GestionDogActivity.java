@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -30,6 +32,9 @@ public class GestionDogActivity extends AppCompatActivity {
 
         gestionDogViewModel.load();
         setContentView(binding.getRoot());
+
+        binding.buttonAddDog.setOnClickListener(this::openAddDog);
+
         dogsAdapter = new DogsAdapter(new ArrayList<>(), dog -> {
 
         });
@@ -49,5 +54,9 @@ public class GestionDogActivity extends AppCompatActivity {
         });
     }
 
+    private void openAddDog(View view) {
+        Intent intent = new Intent(this, AddDogActivity.class);
+        startActivity(intent);
+    }
 
 }
