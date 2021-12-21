@@ -4,7 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
+import java.util.Objects;
 
+import be.hevelaska.mobile.data.model.ride.DtoCreateRide;
+import be.hevelaska.mobile.data.model.ride.DtoRides;
 import be.hevelaska.mobile.infrastructure.IDogsService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,5 +56,30 @@ public class DogRepository {
                     }
                 });
     }
+
+    public void createDog(DtoCreateDog dtoCreateDog, Runnable success , Runnable error){
+        this.dataSource.create(dtoCreateDog)
+                .enqueue(new Callback<DtoDog>() {
+                    @Override
+                    public void onResponse(Call<DtoDog> call, Response<DtoDog> response) {
+                        if(response.code() == 201) {
+                            Objects.requireNonNull(dogsList.getValue()).add(response.body());
+                            dogsList.setValue(dogsList.getValue());
+                            if(success != null) success.run();
+                        }
+                        else {
+                            if(error != null) error.run();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<DtoDog> call, Throwable t) {
+                        if(error != null) error.run();
+                    }
+                });
+
+    }
+
 
 }

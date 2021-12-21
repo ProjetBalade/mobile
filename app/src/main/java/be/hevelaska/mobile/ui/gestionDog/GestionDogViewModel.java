@@ -60,8 +60,8 @@ public class GestionDogViewModel extends ViewModel {
     }
 
     public void addDog(Runnable success, Runnable error) {
-        DtoCreateDog dtoCreateDog = new DtoCreateDog(nameDog, raceDog, dateOfBirth, loginRepository.getUserId());
-        this.repository.loadDogs(success, error);
+        DtoCreateDog dtoCreateDog = new DtoCreateDog(nameDog, raceDog, dateOfBirth, 2);
+        this.repository.createDog(dtoCreateDog, success, error);
     }
 
 }

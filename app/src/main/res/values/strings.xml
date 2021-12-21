@@ -32,4 +32,7 @@
     <string name="name">name</string>
     <string name="race">race</string>
     <string name="ajouter_chien">ajouter chien</string>
+    <string name="ajout_d_un_nouveau_chien">Ajout d\'un nouveau chien</string>
+    <string name="nom_du_chien">Nom du chien</string>
+    <string name="race_du_chien">Race du chien</string>
 </resources>

@@ -14,6 +14,7 @@
         app:icon="@drawable/ic_baseline_pets_24"
         android:layout_gravity="end|bottom"
         android:text="@string/ajouter_chien"
+        android:onClick="openAddDog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
