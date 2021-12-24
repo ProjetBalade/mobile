@@ -1,11 +1,15 @@
 package be.hevelaska.mobile.data.model.dog;
 
-public class DtoDog {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DtoDog implements Parcelable {
     private int id;
     private String nameDog;
     private String raceDog;
     private String dateOfBirth;
     private int idUser;
+
 
     public DtoDog(int id, String nameDog, String raceDog, String dateOfBirth, int idUser) {
         this.id = id;
@@ -65,4 +69,42 @@ public class DtoDog {
                 ", idUser=" + idUser +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeInt(idUser);
+
+        parcel.writeString(nameDog);
+        parcel.writeString(raceDog);
+        parcel.writeString(dateOfBirth);
+
+    }
+
+    private DtoDog(Parcel in) {
+        id = in.readInt();
+        idUser = in.readInt();
+
+        nameDog = in.readString();
+        raceDog = in.readString();
+        dateOfBirth = in.readString();
+    }
+
+    public static final Parcelable.Creator<DtoDog> CREATOR
+            = new Parcelable.Creator<DtoDog>() {
+        public DtoDog createFromParcel(Parcel in) {
+            return new DtoDog(in);
+        }
+
+        public DtoDog[] newArray(int size) {
+            return new DtoDog[size];
+        }
+
+    };
+
 }

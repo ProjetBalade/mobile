@@ -17,7 +17,7 @@ import be.hevelaska.mobile.infrastructure.RetrofitWrapper;
 
 public class GestionDogViewModel extends ViewModel {
     private int id;
-    private String nameDog ;
+    private String nameDog;
     private String raceDog;
     private String dateOfBirth;
     private int idUser;
@@ -60,8 +60,15 @@ public class GestionDogViewModel extends ViewModel {
     }
 
     public void addDog(Runnable success, Runnable error) {
-        DtoCreateDog dtoCreateDog = new DtoCreateDog(nameDog, raceDog, dateOfBirth, 2);
+        DtoCreateDog dtoCreateDog = new DtoCreateDog(nameDog, raceDog, dateOfBirth);
         this.repository.createDog(dtoCreateDog, success, error);
     }
 
+    public void deleteDog(int id,Runnable success, Runnable error){
+        repository.deleteDog(id,success,error);
+    }
+
+    public void updateDog(Runnable success, Runnable error){
+        repository.updateDog(new DtoDog(id, nameDog, raceDog, dateOfBirth, idUser),success,error);
+    }
 }

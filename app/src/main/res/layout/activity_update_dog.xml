@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.gestionDog.UpdateDogActivity"
     android:background="#8FBDB4D1">
-
 
     <TextView
         android:id="@+id/update_dog"
@@ -15,7 +15,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginEnd="91dp"
         android:gravity="center"
-        android:text="@string/ajout_d_un_nouveau_chien"
+        android:text="@string/mise_jours_du_chien"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ed_raceDog" />
 
     <Button
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"
@@ -82,5 +82,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_dateOfBirth" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

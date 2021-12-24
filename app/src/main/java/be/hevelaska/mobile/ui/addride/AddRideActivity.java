@@ -26,7 +26,7 @@ public class AddRideActivity extends AppCompatActivity {
 
         binding.addRideBtn.setOnClickListener(v -> {
             viewModel.createRide(() -> {
-                Toast.makeText(AddRideActivity.this, "Merci pour votre collaboration :)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddRideActivity.this, "Merci pour votre collaboration un administrateur va valider votre balade :)", Toast.LENGTH_SHORT).show();
                 finish();
             }, () -> {
                 Toast.makeText(AddRideActivity.this, "Une erreur est survenue :(", Toast.LENGTH_SHORT).show();

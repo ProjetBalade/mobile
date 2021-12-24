@@ -3,9 +3,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import java.io.IOException;
-
-import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -29,7 +26,7 @@ public class RetrofitWrapper {
                         .newBuilder()
                         .addHeader("deviceplatform", "android")
                         .removeHeader("User-Agent")
-                        .addHeader("Authorization", "Token " + RetrofitWrapper.token)
+                        .addHeader("Authorization", "Bearer " + RetrofitWrapper.token)
                         .build();
                 return chain.proceed(request);
             })

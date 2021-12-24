@@ -1,13 +1,11 @@
 package be.hevelaska.mobile.ui.gestionDog;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -41,9 +39,7 @@ public class GestionDogActivity extends AppCompatActivity {
 
         binding.buttonAddDog.setOnClickListener(this::openAddDog);
 
-        dogsAdapter = new DogsAdapter(new ArrayList<>(), dog -> {
-
-        });
+        dogsAdapter = new DogsAdapter(new ArrayList<>(), this::clickOnDog, this::deleteDog,this::updateDog);
 
         binding.listDog.setAdapter(dogsAdapter);
 
@@ -62,6 +58,22 @@ public class GestionDogActivity extends AppCompatActivity {
 
     private void openAddDog(View view) {
        Intent intent = new Intent(GestionDogActivity.this, AddDogActivity.class);
+        startActivityForResult(intent, REQ_CODE_ADD_DOG);
+    }
+
+
+
+    private void clickOnDog(DtoDog dog){
+
+    }
+
+    private void deleteDog(DtoDog dog){
+        gestionDogViewModel.deleteDog(dog.getId(),null,null);
+    }
+
+    private void updateDog(DtoDog dog){
+        Intent intent = new Intent(GestionDogActivity.this, UpdateDogActivity.class);
+        intent.putExtra("dog",dog);
         startActivityForResult(intent, REQ_CODE_ADD_DOG);
     }
 

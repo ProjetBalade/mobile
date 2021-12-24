@@ -3,7 +3,7 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
@@ -35,4 +35,15 @@
     <string name="ajout_d_un_nouveau_chien">Ajout d\'un nouveau chien</string>
     <string name="nom_du_chien">Nom du chien</string>
     <string name="race_du_chien">Race du chien</string>
+    <string name="supprimer_un_chien">supprimer un chien</string>
+    <string name="mise_jours_du_chien">mise à jours du chien</string>
+    <string name="se_rendre_sur_le_lieu_de_la_balade">se rendre sur le lieu de la balade</string>
+    <string name="nom_de_la_balade">nom de la balade</string>
+    <string name="adresseDetail">adresse</string>
+    <string name="web">detail ride</string>
+    <string name="horaire">detail ride</string>
+    <string name="difficulter">detail ride</string>
+    <string name="website">Site Web</string>
+    <string name="schedule">Horaires</string>
+    <string name="difficulty">Difficulté</string>
 </resources>

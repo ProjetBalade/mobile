@@ -12,7 +12,7 @@ public class DtoCreateRide {
     private double longitude;
     private double latitude;
 
-    public DtoCreateRide(String nameRide, String place, String description, String website, int difficulty, String schedule, String photo, int score, int idUser,double longitude, double latitude) {
+    public DtoCreateRide(String nameRide, String place, String description, String website, int difficulty, String schedule, int score) {
         this.nameRide = nameRide;
         this.place = place;
         this.description = description;
@@ -20,9 +20,7 @@ public class DtoCreateRide {
         this.difficulty = difficulty;
         this.schedule = schedule;
         this.score = score;
-        this.idUser = idUser;
-        this.longitude = longitude;
-        this.latitude = latitude;
+
     }
 
     public void setDifficulty(int difficulty) {

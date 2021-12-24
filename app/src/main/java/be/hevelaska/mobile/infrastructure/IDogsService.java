@@ -27,5 +27,5 @@ public interface IDogsService {
     Call<Void> delete(@Path("id") int id);
 
     @PUT("dog/{id}")
-    Call<Void> update(@Path("id") int id,@Body DtoDog dtoDogs);
+    Call<DtoDog> update(@Path("id") int id,@Body DtoDog dtoDogs);
 }

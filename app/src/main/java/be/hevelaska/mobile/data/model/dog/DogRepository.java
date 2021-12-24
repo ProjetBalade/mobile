@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import be.hevelaska.mobile.data.model.ride.DtoCreateRide;
 import be.hevelaska.mobile.data.model.ride.DtoRides;
@@ -47,7 +48,7 @@ public class DogRepository {
                 .enqueue(new Callback<List<DtoDog>>() {
                     @Override
                     public void onResponse(Call<List<DtoDog>> call, Response<List<DtoDog>> response) {
-                        if(response.code() == 200) {
+                        if(response.code() >= 200) {
                             dogsList.setValue(response.body());
                             if(success != null) success.run();
                         }
@@ -85,6 +86,66 @@ public class DogRepository {
                     }
                 });
 
+    }
+
+    public void updateDog(DtoDog dtoDog, Runnable success , Runnable error){
+        this.dataSource.update(dtoDog.getId(),dtoDog)
+               .enqueue(new Callback<DtoDog>() {
+                   @Override
+                   public void onResponse(Call<DtoDog> call, Response<DtoDog> response) {
+                       if(response.code() == 200) {
+                           DtoDog dogToDelete = null;
+                           for (DtoDog dg: Objects.requireNonNull(dogsList.getValue())){
+                               if(dg.getId() == dtoDog.getId()) {
+                                   dogToDelete = dg;
+                                   break;
+                               }
+                           }
+                           Objects.requireNonNull(dogsList.getValue()).remove(dogToDelete);
+                           Objects.requireNonNull(dogsList.getValue()).add(response.body());
+                           dogsList.setValue(dogsList.getValue());
+                           if(success != null) success.run();
+                       }
+                       else {
+                           if(error != null) error.run();
+                       }
+                   }
+
+                   @Override
+                   public void onFailure(Call<DtoDog> call, Throwable t) {
+
+                   }
+               });
+
+    }
+
+    public void deleteDog(int id, Runnable success , Runnable error){
+        this.dataSource.delete(id)
+                .enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if(response.code() >= 200) {
+                            DtoDog dogToDelete = null;
+                            for (DtoDog dg: Objects.requireNonNull(dogsList.getValue())){
+                                if(dg.getId() == id) {
+                                    dogToDelete = dg;
+                                    break;
+                                }
+                            }
+                            Objects.requireNonNull(dogsList.getValue()).remove(dogToDelete);
+                            dogsList.setValue(dogsList.getValue());
+                            if(success != null) success.run();
+                        }
+                        else {
+                            if(error != null) error.run();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        if(error != null) error.run();
+                    }
+                });
     }
 
 
