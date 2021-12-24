@@ -4,6 +4,7 @@ import androidx.core.util.Consumer;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,7 +22,7 @@ public class RideRepository {
 
     private RideRepository(IRidesService dataSource) {
         this.dataSource = dataSource;
-        this.ridesList = new MutableLiveData<>();
+        this.ridesList = new MutableLiveData<>(new ArrayList<>());
     }
 
     public static RideRepository getInstance(IRidesService dataSource) {

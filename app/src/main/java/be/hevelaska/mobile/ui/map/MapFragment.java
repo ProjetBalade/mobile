@@ -18,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -25,13 +26,18 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import be.hevelaska.mobile.data.model.ride.DtoRides;
 import be.hevelaska.mobile.data.model.ride.RideRepository;
 import be.hevelaska.mobile.infrastructure.IRidesService;
 import be.hevelaska.mobile.infrastructure.RetrofitWrapper;
+import be.hevelaska.mobile.ui.DetailRideActivity;
 import be.hevelaska.mobile.ui.addride.AddRideActivity;
 import be.hevelaska.mobile.databinding.FragmentMapBinding;
 
@@ -43,8 +49,11 @@ public class MapFragment extends Fragment {
 
     private LiveData<List<DtoRides>> rides;
 
+
     boolean locationEnabled;
     GoogleMap map;
+
+    private HashMap<Marker, DtoRides> markers;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -84,10 +93,7 @@ public class MapFragment extends Fragment {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(context);
 
         if(context instanceof Activity) {
-
             setupUserLocationPermission(context);
-
-            setupData((LifecycleOwner) context);
         }
 
     }
@@ -110,20 +116,38 @@ public class MapFragment extends Fragment {
         }
     }
 
-    private void setupData(LifecycleOwner context) {
-        this.rides = RideRepository.getInstance(RetrofitWrapper.getInstance().create(IRidesService.class)).getRidesList();
-        this.rides.observe(context, rides -> {
-            Log.i("MAP", "Got some rides " + rides);
-        });
-    }
-
 
     private void setupMap(GoogleMap map) {
         this.map = map;
         setupUserLocation();
 
         map.getUiSettings().setMyLocationButtonEnabled(false);
+        map.setOnInfoWindowClickListener(marker -> {
+            DtoRides rideClicked = MapFragment.this.markers.get(marker);
+            Intent intent = new Intent(getContext(), DetailRideActivity.class);
+            intent.putExtra("baladeChoisi",rideClicked);
+            startActivity(intent);
+        });
 
+        this.homeViewModel.getRideList().observe(this, MapFragment.this::reloadMarkers);
+
+    }
+
+    private void reloadMarkers(List<DtoRides> dtoRides) {
+        if(markers == null) markers = new HashMap<>();
+        for(Marker m : markers.keySet()) {
+            m.remove();
+        }
+        markers.clear();
+        for(DtoRides ride : dtoRides) {
+            Marker marker = this.map.addMarker(
+                    new MarkerOptions()
+                            .position(new LatLng(ride.getLatitude(), ride.getLongitude()))
+                            .title(ride.getNameRide())
+            );
+
+            markers.put(marker, ride);
+        }
     }
 
     @SuppressLint("MissingPermission")
@@ -187,4 +211,6 @@ public class MapFragment extends Fragment {
         super.onLowMemory();
         binding.mapView.onLowMemory();
     }
+
+
 }

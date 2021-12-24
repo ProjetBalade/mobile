@@ -7,11 +7,11 @@ public class DtoCreateDog {
     private String dateOfBirth;
     private int idUser;
 
-    public DtoCreateDog(String nameDog, String raceDog, String dateOfBirth, int idUser) {
+    public DtoCreateDog(String nameDog, String raceDog, String dateOfBirth) {
         this.nameDog = nameDog;
         this.raceDog = raceDog;
         this.dateOfBirth = dateOfBirth;
-        this.idUser = idUser;
+
     }
 
     public String getNameDog() {

@@ -15,10 +15,14 @@ public class DogsAdapter extends RecyclerView.Adapter<DogsAdapter.ViewHolder>{
 
     private List<DtoDog> dogs;
     private final OnDogClickListener onDogClickListener;
+    private final OnDogClickListener onDeleteDog;
+    private final OnDogClickListener onEditDog;
 
-    public DogsAdapter(List<DtoDog> dogs, OnDogClickListener onDogClickListener) {
+    public DogsAdapter(List<DtoDog> dogs, OnDogClickListener onDogClickListener, OnDogClickListener onDeleteDog,OnDogClickListener onEditDog) {
         this.dogs = dogs;
         this.onDogClickListener = onDogClickListener;
+        this.onDeleteDog = onDeleteDog;
+        this.onEditDog = onEditDog;
     }
 
     @NonNull
@@ -30,7 +34,7 @@ public class DogsAdapter extends RecyclerView.Adapter<DogsAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final DtoDog dtoDog = dogs.get(position);
-        holder.bind(dtoDog, onDogClickListener);
+        holder.bind(dtoDog, onDogClickListener,onDeleteDog, onEditDog);
     }
 
     @Override
@@ -53,11 +57,14 @@ public class DogsAdapter extends RecyclerView.Adapter<DogsAdapter.ViewHolder>{
             this.binding= binding;
 
         }
-        public void bind(DtoDog dog, OnDogClickListener onDogClickListener){
+        public void bind(DtoDog dog, OnDogClickListener onDogClickListener, OnDogClickListener onDogDeleteListener, OnDogClickListener onDogEdit){
             binding.nameDog.setText(dog.getNameDog());
             binding.raceDog.setText(dog.getRaceDog());
 
+
             binding.getRoot().setOnClickListener(v -> onDogClickListener.onClick(dog));
+            binding.deleteBtn.setOnClickListener(view -> onDogDeleteListener.onClick(dog));
+            binding.updateBtn.setOnClickListener(view -> onDogEdit.onClick(dog) );
         }
 
         @Override

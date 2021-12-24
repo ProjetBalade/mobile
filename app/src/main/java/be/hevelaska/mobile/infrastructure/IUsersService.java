@@ -4,6 +4,8 @@ import java.util.List;
 
 import be.hevelaska.mobile.data.model.user.DtoCreateUser;
 import be.hevelaska.mobile.data.model.user.DtoUser;
+import be.hevelaska.mobile.dto.ApiAuthRequest;
+import be.hevelaska.mobile.dto.ApiAuthResult;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -27,4 +29,8 @@ public interface IUsersService {
 
     @PUT("users/{id}")
     Call<Void> update(@Path("id") int id,@Body DtoUser dtoUser);
+
+    @POST("users/Authenticate")
+    Call<ApiAuthResult> authenticate(@Body ApiAuthRequest request);
+
 }

@@ -267,35 +267,9 @@ public class MessageActivity extends AppCompatActivity {
                 });
     }
 
-    private void updateDogAndLog(){
-        dogsService.update(2,new DtoDog(2,"testUpdate","labrador","2021-11-21",1))
-                .enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        Log.i("DOGS","Todo updated");
-                    }
 
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Log.e("DOGS", "Error update dog");
-                    }
-                });
-    }
 
-    private void createDogAndLog(){
-        dogsService.create(new DtoCreateDog("maska","berger de laponie","2021-11-25",2))
-                .enqueue(new Callback<DtoDog>() {
-                    @Override
-                    public void onResponse(Call<DtoDog> call, Response<DtoDog> response) {
-                        Log.i("DOGS", "dog created");
-                    }
-
-                    @Override
-                    public void onFailure(Call<DtoDog> call, Throwable t) {
-                        Log.e("DOGS", "Error create dog");
-                    }
-                });
-    }
+    
     // test ride
 
     private void getRidesAndLog() {
@@ -362,20 +336,6 @@ public class MessageActivity extends AppCompatActivity {
                 });
     }
 
-    private void createRideAndLog(){
-        ridesService.create(new DtoCreateRide("new ride","new place","new desc","siteweb",5,"heure d'ouverture","image",1,2,1234,567))
-                .enqueue(new Callback<DtoRides>() {
-                    @Override
-                    public void onResponse(Call<DtoRides> call, Response<DtoRides> response) {
-                        Log.i("RIDES", "ride created");
-                    }
-
-                    @Override
-                    public void onFailure(Call<DtoRides> call, Throwable t) {
-                        Log.e("RIDES", "Error create ride");
-                    }
-                });
-    }
 
     // test user
     private void getUsersAndLog() {

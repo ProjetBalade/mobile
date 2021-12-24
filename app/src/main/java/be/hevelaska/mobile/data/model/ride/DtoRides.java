@@ -1,6 +1,9 @@
 package be.hevelaska.mobile.data.model.ride;
 
-public class DtoRides {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class DtoRides implements Parcelable {
 
     private int id;
     private String nameRide;
@@ -29,6 +32,51 @@ public class DtoRides {
     }
 
 
+    protected DtoRides(Parcel in) {
+        id = in.readInt();
+        nameRide = in.readString();
+        place = in.readString();
+        description = in.readString();
+        website = in.readString();
+        difficulty = in.readInt();
+        schedule = in.readString();
+        score = in.readInt();
+        idUser = in.readInt();
+        longitude = in.readDouble();
+        latitude = in.readDouble();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(nameRide);
+        dest.writeString(place);
+        dest.writeString(description);
+        dest.writeString(website);
+        dest.writeInt(difficulty);
+        dest.writeString(schedule);
+        dest.writeInt(score);
+        dest.writeInt(idUser);
+        dest.writeDouble(longitude);
+        dest.writeDouble(latitude);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<DtoRides> CREATOR = new Creator<DtoRides>() {
+        @Override
+        public DtoRides createFromParcel(Parcel in) {
+            return new DtoRides(in);
+        }
+
+        @Override
+        public DtoRides[] newArray(int size) {
+            return new DtoRides[size];
+        }
+    };
 
     public int getId() {
         return id;

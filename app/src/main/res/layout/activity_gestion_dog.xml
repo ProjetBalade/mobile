@@ -6,12 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.gestionDog.GestionDogActivity">
 
-    <Button
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/button_add_dog"
-        android:elevation="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:icon="@drawable/ic_baseline_pets_24"
+        android:layout_gravity="end|bottom"
         android:text="@string/ajouter_chien"
+        android:onClick="openAddDog"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -19,6 +22,7 @@
         android:id="@+id/list_dog"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#F0F0F0"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

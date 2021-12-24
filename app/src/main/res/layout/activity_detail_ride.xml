@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".ui.DetailRideActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:textSize="24sp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#0A0A0A"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nom_de_la_balade"
+        />
+
+
+    <TextView
+        android:id="@+id/place_ride_title"
+        android:textSize="14sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adresseDetail"
+        />
+    <TextView
+        android:id="@+id/place_ride"
+        android:textSize="18sp"
+        android:textColor="#0A0A0A"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/adresseDetail"
+        />
+
+    <TextView
+        android:id="@+id/website_title"
+        android:textSize="14sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/website"
+        />
+    <TextView
+        android:id="@+id/website_ride"
+        android:textSize="18sp"
+        android:textColor="#0A0A0A"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/web" />
+
+
+    <TextView
+        android:id="@+id/horaire_title"
+        android:textSize="14sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/schedule"
+        />
+    <TextView
+        android:id="@+id/horaire_ride"
+        android:textSize="18sp"
+        android:textColor="#0A0A0A"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/horaire"
+        />
+
+
+    <TextView
+        android:id="@+id/difficulte_title"
+        android:textSize="14sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/difficulty"
+        />
+    <TextView
+        android:id="@+id/difficulte"
+        android:textSize="18sp"
+        android:textColor="#0A0A0A"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/difficulter"
+       />
+
+    <TextView
+        android:id="@+id/score_title"
+        android:textSize="14sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/score"
+        />
+
+    <TextView
+        android:id="@+id/score_ride"
+        android:textColor="#0A0A0A"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score"
+         />
+
+    <Button
+        android:id="@+id/intent_googleMap"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/se_rendre_sur_le_lieu_de_la_balade"
+        />
+</LinearLayout>

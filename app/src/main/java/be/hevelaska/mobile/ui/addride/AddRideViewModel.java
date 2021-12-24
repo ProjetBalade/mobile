@@ -67,7 +67,7 @@ public class AddRideViewModel extends ViewModel {
     public void setLatitude(double latitude) { this.latitude = latitude; }
 
     public void createRide(Runnable success, Runnable error) {
-        DtoCreateRide dto = new DtoCreateRide(nameRide, place, description, website, difficulty, schedule, photo, score, loginRepository.getUserId(),longitude,latitude);
+        DtoCreateRide dto = new DtoCreateRide(nameRide, place, description, website, difficulty, schedule,score);
         this.repository.createRides(dto, success, error);
     }
 }
