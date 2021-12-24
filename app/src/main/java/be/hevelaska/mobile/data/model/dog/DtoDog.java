@@ -2,9 +2,8 @@ package be.hevelaska.mobile.data.model.dog;
 
 public class DtoDog {
     private int id;
-    private String nameDog ;
+    private String nameDog;
     private String raceDog;
-    //private DateTime  dateOfBirth ;
     private String dateOfBirth;
     private int idUser;
 

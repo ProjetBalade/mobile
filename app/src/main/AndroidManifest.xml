@@ -23,6 +23,14 @@
         </activity>
 
         <activity
+            android:name=".ui.gestionDog.AddDogActivity"
+            android:exported="false">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".ui.gestionDog.GestionDogActivity" />
+        </activity>
+
+        <activity
             android:name=".ui.addride.AddRideActivity"
             android:exported="false" />
 
